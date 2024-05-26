@@ -1,0 +1,32 @@
+version: "3"
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    ports:
+    - "5432:5432"
+    volumes:
+    - boilerplate-db:/var/lib/data/postgres
+    env_file:
+    - docker.env
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080  
+  
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   ports:
+  #     - 5050:80
+  #   environment:
+  #      PGADMIN_DEFAULT_EMAIL: "pgadmin@codepruner.com"
+  #      PGADMIN_DEFAULT_PASSWORD: "pgadminP@ssw0rd!"
+ 
+# networks:
+#   postgres:
+#     driver: bridge
+
+volumes:
+  boilerplate-db:
